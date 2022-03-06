@@ -1,4 +1,4 @@
-package com.rootdown.dev.adidevibm.data.feature_random_user.db
+package com.rootdown.dev.adidevibm.model.feature_random_user.db
 
 import androidx.room.Dao
 import androidx.room.Insert
