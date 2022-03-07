@@ -7,8 +7,9 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.rootdown.dev.adidevibm.model.feature_random_user.db.util.ListStringConverter
 
+
 @Database(
-    entities = [User::class],
+    entities = [Users::class],
     version = 1,
     exportSchema = false
 )

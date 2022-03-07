@@ -1,10 +1,12 @@
-package com.rootdown.dev.adidevibm.di
+package com.rootdown.dev.adidevibm
 
+import android.content.Context
 import android.util.Log
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import androidx.lifecycle.ViewModelProvider
+import com.rootdown.dev.adidevibm.model.feature_random_user.db.AppDatabase
+import com.rootdown.dev.adidevibm.model.feature_random_user.net.UserServiceImpl
+import com.rootdown.dev.adidevibm.model.feature_random_user.repo.UserRepoImpl
+import com.rootdown.dev.adidevibm.viewmodel.feature_random_user.ViewModelFactory
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.*
@@ -14,18 +16,12 @@ import io.ktor.client.features.logging.*
 import io.ktor.client.features.observer.*
 import io.ktor.client.request.*
 import io.ktor.http.*
-import kotlinx.serialization.json.Json
-import javax.inject.Singleton
 
 private const val TIME_OUT = 60_000
-@Module
-@InstallIn(SingletonComponent::class)
-object NetworkModule {
+object Injection {
 
-    @Provides
-    @Singleton
-    fun provideHttpClient(): HttpClient {
-        return HttpClient(Android) {
+    private fun provideUserRepo(context: Context): UserRepoImpl {
+        return UserRepoImpl(UserServiceImpl(client = HttpClient(Android){
             install(JsonFeature) {
                 serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
                     prettyPrint = true
@@ -46,7 +42,7 @@ object NetworkModule {
                     }
 
                 }
-                level = LogLevel.ALL
+                level = LogLevel.BODY
             }
 
             install(ResponseObserver) {
@@ -58,6 +54,9 @@ object NetworkModule {
             install(DefaultRequest) {
                 header(HttpHeaders.ContentType, ContentType.Application.Json)
             }
-        }
+        }) ,AppDatabase.getInstance(context))
+    }
+    fun provideViewModelFactory(context: Context): ViewModelProvider.Factory {
+        return ViewModelFactory(provideUserRepo(context))
     }
 }
