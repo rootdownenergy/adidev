@@ -36,20 +36,38 @@ class UserRepoImpl(
             val pic = picGson.fromJson<Picture>(u.picture,Picture::class.java)
 
             val nm = name.first?.replace("\"", "")
+            val nmlast = name.last?.replace("\"", "")
             val picture = pic.thumbnail?.replace("\"", "")
+            val picturemd = pic.medium?.replace("\"", "")
+            val picturelg = pic.large?.replace("\"", "")
+
+            val emailout = u.email?.replace("\"", "")
+            val phoneout = u.phone?.replace("\"", "")
+
+            //location type adapter
+            val locationGson = GsonBuilder().registerTypeAdapter(Location::class.java,LocationDeserializer()).create()
+            val loc = locationGson.fromJson<Location>(u.location,Location::class.java)
+            val city = loc.city?.replace("\"", "")
+            val state = loc.state?.replace("\"", "")
+            Log.w("XXX", city.toString())
+            Log.w("XXX", state.toString())
 
             Log.w("...",u.toString())
             val currUser = Users(
                 uid = u.id,
-                name = nm,
+                namefirst = nm,
+                namelast = nmlast,
                 location = u.location,
+                city = city,
+                state = state,
                 login = u.login,
                 dob = u.dob,
                 registered = u.registered,
-                picture = picture,
+                picturesm = picture,
+                picturemd = picturelg,
                 gender = u.gender,
-                email = u.email,
-                phone = u.phone,
+                email = emailout,
+                phone = phoneout,
                 cell = u.cell,
                 nat = u.nat,
             )

@@ -40,7 +40,7 @@
                 android:textColor="@color/purple_700"
                 android:textStyle="bold"
                 android:fontFamily="@font/michromareg"
-                android:text="@{users.name}">
+                android:text="@{users.namefirst}">
 
             </TextView>
 
@@ -51,7 +51,7 @@
                 android:layout_gravity="end"
                 android:contentDescription="@string/image"
                 app:cardCornerRadius="16dp"
-                app:imageUrl="@{users.picture}">
+                app:imageUrl="@{users.picturesm}">
 
             </ImageView>
 

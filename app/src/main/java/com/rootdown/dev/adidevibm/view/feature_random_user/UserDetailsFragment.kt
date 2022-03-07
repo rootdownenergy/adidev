@@ -39,12 +39,15 @@ class UserDetailsFragment : Fragment() {
         val view = binding.root
         val img: ImageView = _binding!!.imgUserDetail
         vm.u.observe(viewLifecycleOwner, Observer {
-            val url = it.picture
+            val url = it.picturemd
             Glide.with(this)
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(img)
-            _binding!!.txtUserDetailName.text = it?.name
+            _binding!!.txtUserDetailName.text = it?.namefirst
+            _binding!!.txtUserDetailNameLast.text = it?.namelast
+            _binding!!.txtUserCity.text = "City: "+it?.city
+            _binding!!.txtUserState.text = "State: "+it?.state
         })
         return view
     }

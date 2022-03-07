@@ -74,7 +74,7 @@ class UsersOverviewFragment : Fragment() {
                     users(userCurr)
                     clickListener { x ->
                         val uid: Int = userCurr.id
-                        Toast.makeText(activity, uid.toString(), Toast.LENGTH_LONG).show()
+                        //Toast.makeText(activity, uid.toString(), Toast.LENGTH_LONG).show()
                         val action = UsersOverviewFragmentDirections.actionUsersOverviewFragmentToUserDetailsFragment(uid)
                         x.findNavController().navigate(action)
                     }
