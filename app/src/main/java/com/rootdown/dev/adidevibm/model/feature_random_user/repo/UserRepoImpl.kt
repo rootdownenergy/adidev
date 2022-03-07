@@ -2,18 +2,14 @@ package com.rootdown.dev.adidevibm.model.feature_random_user.repo
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rootdown.dev.adidevibm.model.feature_random_user.db.AppDatabase
 import com.rootdown.dev.adidevibm.model.feature_random_user.db.Users
 import com.rootdown.dev.adidevibm.model.feature_random_user.net.UserService
 import com.rootdown.dev.adidevibm.model.feature_random_user.net.UserServiceImpl
-import com.rootdown.dev.adidevibm.model.feature_random_user.repo.util.ResultsDeserializer
-import com.rootdown.dev.adidevibm.model.feature_random_user.repo.util.ResultsSerializer
-import com.rootdown.dev.adidevibm.model.feature_random_user.repo.util.User
+import com.rootdown.dev.adidevibm.model.feature_random_user.repo.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
 
 class UserRepoImpl(
     val api: UserServiceImpl,
@@ -26,22 +22,31 @@ class UserRepoImpl(
             val xi = user.toString().removeRange(0..11)
             val xix = xi.replaceAfter("]","").replace("]","", false)
 
-            val convertJson = Gson().toJson(user)
-            val output = Gson().fromJson(user, User::class.java)
+            //val convertJson = Gson().toJson(user)
+            //val output = Gson().fromJson(user, User::class.java)
             val gSon = GsonBuilder().registerTypeAdapter(User::class.java, ResultsDeserializer()).create()
             val xSon = GsonBuilder().registerTypeAdapter(User::class.java, ResultsSerializer()).create()
-            val out = xSon.toJson(user)
+            //val out = xSon.toJson(user)
             val u = gSon.fromJson<User>(xix,User::class.java)
+
+            //register name and picture type adapters
+            val nameGson = GsonBuilder().registerTypeAdapter(Name::class.java,NameDeserializer()).create()
+            val picGson = GsonBuilder().registerTypeAdapter(Picture::class.java,PictureDeserializer()).create()
+            val name = nameGson.fromJson<Name>(u.name,Name::class.java)
+            val pic = picGson.fromJson<Picture>(u.picture,Picture::class.java)
+
+            val nm = name.first?.replace("\"", "")
+            val picture = pic.thumbnail?.replace("\"", "")
 
             Log.w("...",u.toString())
             val currUser = Users(
                 uid = u.id,
-                name = u.name,
+                name = nm,
                 location = u.location,
                 login = u.login,
                 dob = u.dob,
                 registered = u.registered,
-                picture = u.picture,
+                picture = picture,
                 gender = u.gender,
                 email = u.email,
                 phone = u.phone,
@@ -52,9 +57,7 @@ class UserRepoImpl(
             db.userDao().insertUser(ls)
         }
     }
-    fun getUsers(): LiveData<List<Users>> {
-        return db.userDao().getUsers()
-    }
+    val getUsers: LiveData<List<Users>> = db.userDao().getUsers()
 }
 
 

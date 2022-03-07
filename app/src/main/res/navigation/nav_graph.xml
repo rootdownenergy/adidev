@@ -17,5 +17,10 @@
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.rootdown.dev.adidevibm.view.feature_random_user.UserDetailsFragment"
-        android:label="UserDetailsFragment" />
+        android:label="UserDetailsFragment">
+        <argument
+            android:name="userId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
 </navigation>

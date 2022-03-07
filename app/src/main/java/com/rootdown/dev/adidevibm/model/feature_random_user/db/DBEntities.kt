@@ -4,8 +4,6 @@ import kotlinx.serialization.Serializable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Serializable
 @Entity(tableName = "users")
 data class Users(
     @PrimaryKey(autoGenerate = true)
