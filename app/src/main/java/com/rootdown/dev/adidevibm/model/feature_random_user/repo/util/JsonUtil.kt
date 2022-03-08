@@ -22,7 +22,7 @@ data class Location(
     var city: String?,
     var state: String?,
     var country: String?,
-    var postcode: Int?,
+    var postcode: String?,
     var coordinates: String?,
     var timezone: String?,
 )
@@ -59,7 +59,7 @@ class LocationDeserializer : JsonDeserializer<Location>{
         val city = json.get("city").toString()
         val state = json.get("state").toString()
         val country = json.get("country").toString()
-        val postcode = json.get("postcode").toString().toInt()
+        val postcode = json.get("postcode").toString()
 
         val streetJson = json.get("street")
         val street = if (streetJson.isJsonObject) streetJson.asJsonObject.toString() else streetJson.toString()
