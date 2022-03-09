@@ -1,2 +1,2 @@
 # adidev_ibm
-![Screenshot](screenshot2.gif)
+![Screenshot](screenshot3.gif)
