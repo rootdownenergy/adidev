@@ -2,33 +2,28 @@ package com.rootdown.dev.adidevibm.view.feature_random_user
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.rootdown.dev.adidevibm.Injection
 import com.rootdown.dev.adidevibm.R
 import com.rootdown.dev.adidevibm.databinding.FragmentUsersOverviewBinding
 import com.rootdown.dev.adidevibm.model.feature_random_user.db.Users
 import com.rootdown.dev.adidevibm.users
 import com.rootdown.dev.adidevibm.viewmodel.feature_random_user.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class UsersOverviewFragment : Fragment() {
     private lateinit var binding: FragmentUsersOverviewBinding
     private lateinit var state: String
 
-    private val vm: UserViewModel by lazy {
-        val activity = requireNotNull(this.activity){
-            "You can only access the viewModel after onActivityCreated()"
-        }
-        ViewModelProvider(this, Injection.provideViewModelFactory(activity.application))[UserViewModel::class.java]
-    }
+    private val vm: UserViewModel by viewModels()
 
     private var userJob: Job? = null
     private var ls: List<Users> = emptyList()

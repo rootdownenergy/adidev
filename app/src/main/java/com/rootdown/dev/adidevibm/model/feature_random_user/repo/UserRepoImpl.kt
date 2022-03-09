@@ -10,8 +10,10 @@ import com.rootdown.dev.adidevibm.model.feature_random_user.net.UserServiceImpl
 import com.rootdown.dev.adidevibm.model.feature_random_user.repo.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class UserRepoImpl(
+
+class UserRepoImpl @Inject constructor(
     val api: UserServiceImpl,
     private val db: AppDatabase,
 ) {

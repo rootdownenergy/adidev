@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import javax.inject.Inject
 
-
-class UserViewModel(private val repo: UserRepoImpl) : ViewModel() {
+@HiltViewModel
+class UserViewModel @Inject constructor(private val repo: UserRepoImpl) : ViewModel() {
 
     // flow of users for recyclerview
     val users = repo.getUsers

@@ -6,6 +6,7 @@ import android.provider.ContactsContract
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.security.crypto.EncryptedFile
 import androidx.security.crypto.MasterKeys
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.util.concurrent.ExecutorService
