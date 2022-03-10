@@ -33,7 +33,7 @@ class SecurityHelper(appContext: Context) {
     val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
     val mainKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
 
-    val fileToRead = "my_sensitive_data.txt"
+    val fileToRead = "xaes.txt"
     val encryptedFile = EncryptedFile.Builder(
         File(outputDirectory, fileToRead),
         appContext,

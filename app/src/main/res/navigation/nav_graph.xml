@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/usersOverviewFragment"
-        android:name="com.rootdown.dev.adidevibm.view.feature_random_user.UsersOverviewFragment"
+        android:name="com.rootdown.dev.adidevibm.ui.feature_random_user.UsersOverviewFragment"
         android:label="fragment_users_overview"
         tools:layout="@layout/fragment_users_overview" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
-        android:name="com.rootdown.dev.adidevibm.view.feature_random_user.UserDetailsFragment"
+        android:name="com.rootdown.dev.adidevibm.ui.feature_random_user.UserDetailsFragment"
         android:label="UserDetailsFragment">
         <argument
             android:name="userId"

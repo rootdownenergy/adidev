@@ -8,7 +8,7 @@
             type="android.view.View.OnClickListener" />
         <variable
             name="users"
-            type="com.rootdown.dev.adidevibm.model.feature_random_user.db.Users" />
+            type="com.rootdown.dev.adidevibm.data.feature_random_user.db.Users" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

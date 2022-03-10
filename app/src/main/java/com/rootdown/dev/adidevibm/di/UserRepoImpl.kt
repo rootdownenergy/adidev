@@ -2,9 +2,9 @@ package com.rootdown.dev.adidevibm.di
 
 import android.content.Context
 import android.util.Log
-import com.rootdown.dev.adidevibm.model.feature_random_user.db.AppDatabase
-import com.rootdown.dev.adidevibm.model.feature_random_user.net.UserServiceImpl
-import com.rootdown.dev.adidevibm.model.feature_random_user.repo.UserRepoImpl
+import com.rootdown.dev.adidevibm.data.feature_random_user.db.AppDatabase
+import com.rootdown.dev.adidevibm.data.feature_random_user.net.UserServiceImpl
+import com.rootdown.dev.adidevibm.data.feature_random_user.repo.UserRepoImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,6 @@ import io.ktor.client.features.logging.*
 import io.ktor.client.features.observer.*
 import io.ktor.client.request.*
 import io.ktor.http.*
-import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
 private const val TIME_OUT = 60_000

@@ -2,7 +2,7 @@ package com.rootdown.dev.adidevibm.di
 
 import android.content.Context
 import androidx.room.Room
-import com.rootdown.dev.adidevibm.model.feature_random_user.db.AppDatabase
+import com.rootdown.dev.adidevibm.data.feature_random_user.db.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
