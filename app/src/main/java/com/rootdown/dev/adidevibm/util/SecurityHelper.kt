@@ -30,19 +30,19 @@ class SecurityHelper(appContext: Context) {
     }
     // Although you can define your own key generation parameter specification, it's
     // recommended that you use the value specified here.
-    val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-    val mainKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
+    private val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
+    private val mainKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
 
-    val fileToRead = "xaes.txt"
-    val encryptedFile = EncryptedFile.Builder(
+    private val fileToRead = "xaes.txt"
+    private val encryptedFile = EncryptedFile.Builder(
         File(outputDirectory, fileToRead),
         appContext,
         mainKeyAlias,
         EncryptedFile.FileEncryptionScheme.AES256_GCM_HKDF_4KB
     ).build()
 
-    val inputStream = encryptedFile.openFileInput()
-    val byteArrayOutputStream = ByteArrayOutputStream()
+    private val inputStream = encryptedFile.openFileInput()
+    private val byteArrayOutputStream = ByteArrayOutputStream()
 
     private fun xStream(){
         var nextByte: Int = inputStream.read()
