@@ -22,7 +22,7 @@ data class UserX(
     val picture: Picture? = null,
     val nat: String? = null
 ) : Parcelable {
-    
+    // static
     companion object {
         fun createRandom(): UserX {
             return UserX(
