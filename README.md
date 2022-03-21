@@ -1,2 +1,2 @@
 # adidev_ibm
-![Screenshot](screenshot_random_user_rebase.gif)
+![Screenshot](screenshot_random_user.gif)
