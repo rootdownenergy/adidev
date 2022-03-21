@@ -32,7 +32,6 @@ data class UserX(
                 dob = Dob(age = 25)
             )
         }
-
         private fun randomString() = UUID.randomUUID().toString().take(6)
         private fun randomDouble() = Random().nextDouble() * 100
     }

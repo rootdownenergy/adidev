@@ -18,4 +18,5 @@
     <color name="p_dark_green">#1faa00</color>
     <color name="bg">#00adff</color>
     <color name="bg2">#00b8c9</color>
+    <color name="grey">#33aaaaaa</color>
 </resources>

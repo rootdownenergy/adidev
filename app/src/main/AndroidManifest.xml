@@ -3,6 +3,8 @@
     package="com.rootdown.dev.adidevibm">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".App"
@@ -15,12 +17,19 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
+
+        </activity>
+        <activity android:name=".ui.feature_random_user.AlternateActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.feature_random_user.DetailsActivity" />
+
+        <activity android:name=".ui.feature_random_user.LocationActivity" />
     </application>
 
 </manifest>
